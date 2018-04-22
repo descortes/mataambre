@@ -5,7 +5,7 @@ Mataambre
 Ejecutar mataambre con gunicorn
 
 ```
-gunicorn mataambre:mataambre
+./start.sh 8000
 ```
 
 ---
@@ -13,7 +13,7 @@ gunicorn mataambre:mataambre
 
 Hola mundo..
 ```
-curl localhost:8000/hola/$nombre
+curl localhost:8000/cortesdecarne/mataambre
 ```
 
 
@@ -21,3 +21,4 @@ curl localhost:8000/hola/$nombre
 #### Links
 * [gunicorn](http://docs.gunicorn.org/en/stable/index.html)
 * [flask](flask.pocoo.org)
+* [nginx](https://docs.nginx.com/nginx/admin-guide/)
