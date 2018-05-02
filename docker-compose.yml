@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+
+    gunicorn:
+        build:
+            context: .
+            dockerfile: gunicorn.dockerfile
+        volumes:
+            - ./py:/home/py
+        links:
+            - grafana
+        command: gunicorn -w 1 app:app -b :8000
+
+    grafana:
+        image: grafana/grafana:5.0.4
+        ports:
+            - "81:3000"
