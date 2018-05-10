@@ -30,8 +30,25 @@ docker rmi <image_id> [-f]
 # Versión instalada
 docker version
 
+# Docker build image
+docker build -t py/app .
+
 ### Docker compose
 
 # Build and run your app with Compose
-docker-compose up .
+docker-compose up 
+
+
+### docker-compose.yml
+
+#Forwards the exposed port 5000 on the container to port 5000 on the host machine. We use the default port for the Flask web server, 5000.
+	ports:
+		-5000:5000
+
+
+### cAdvisor
+
+cAdvisor (Container Advisor) provides container users an understanding of the resource usage and performance characteristics of their running containers. It is a running daemon that collects, aggregates, processes, and exports information about running containers. Specifically, for each container it keeps resource isolation parameters, historical resource usage, histograms of complete historical resource usage and network statistics. This data is exported by container and machine-wide.
+
+
 ```
