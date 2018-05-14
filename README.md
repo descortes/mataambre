@@ -38,6 +38,8 @@ docker build -t py/app .
 # Build and run your app with Compose
 docker-compose up 
 
+# Execute an interactive bash shell on the container.
+docker exec -it ubuntu_bash bash
 
 ### docker-compose.yml
 
@@ -50,5 +52,11 @@ docker-compose up
 
 cAdvisor (Container Advisor) provides container users an understanding of the resource usage and performance characteristics of their running containers. It is a running daemon that collects, aggregates, processes, and exports information about running containers. Specifically, for each container it keeps resource isolation parameters, historical resource usage, histograms of complete historical resource usage and network statistics. This data is exported by container and machine-wide.
 
+
+### Graphite does three things:
+
+Kick ass.
+Chew bubblegum.
+Make it easy to store and graph metrics.
 
 ```
