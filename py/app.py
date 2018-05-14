@@ -3,6 +3,6 @@ from flask import Response
 
 app = Flask(__name__)
 
-@app.route('/cortesdecarne/mataambre', methods = ['GET'])
+@app.route('/saludo/hola', methods = ['GET'])
 def getmataambre():
-	return 'mataambre \n'
+	return 'mundo \n'
