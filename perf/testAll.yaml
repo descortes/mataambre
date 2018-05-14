@@ -1,0 +1,56 @@
+config:
+  environments:
+    node:
+      target: 'http://localhost:5555/node'
+      plugins:
+        statsd:
+          host: localhost
+          port: 8125
+          prefix: "artillery-node"
+    gunicorn:
+      target: 'http://localhost:9555/'
+    # timeout:10
+      plugins:
+        statsd:
+          host: localhost
+          port: 8125
+          prefix: "artillery-gunicorn"
+
+  pool: 50 # All HTTP requests from all virtual users will be sent over the same connections
+
+  phases:
+    - name: Plain
+      duration: 3
+      arrivalCount: 1
+    - pause: 10
+    - duration: 5
+      arrivalCount: 1
+    - pause: 10
+
+scenarios:
+  - name: testAll (/)
+    flow:
+      - log: 'Trying Hola..'
+      - get:
+          url: '/saludo/hola'
+      - log: 'Respuesta = {{ respuesta }}.'
+      - log: 'Trying Random..'
+      - get:
+          url: '/random/32'
+          capture: 
+            json: '$'
+            as: 'randomNum'
+      - log: 'Trying Sleep.. randomNum = {{ randomNum }}.'
+      - get:
+          url: '/sleep/{{ randomNum }}'
+          capture: 
+            json: '$'
+            as: 'fiboNum'
+      - log: 'Trying Fibonacci..  fiboNum = {{ fiboNum }}.'
+      - get:
+          url: '/fibo/{{ fiboNum }}'
+          capture: 
+            json: '$'
+            as: 'lastNumb'
+      - log: 'Finished. lastNumb = {{ lastNumb }}.'
+

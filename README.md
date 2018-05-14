@@ -60,3 +60,43 @@ Chew bubblegum.
 Make it easy to store and graph metrics.
 
 ```
+
+### Artillery
+
+Script Reference (https://artillery.io/docs/script-reference)
+
+Example:
+```yaml
+
+config:
+  target: "https://staging1.local"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 50
+    - duration: 600
+      arrivalRate: 50
+  payload:
+    path: "keywords.csv"
+    fields:
+      - "keywords"
+scenarios:
+  - name: "Search and buy"
+    flow:
+      - post:
+          url: "/search"
+          body: "kw={{ keywords }}"
+          capture:
+            json: "$.results[0].id"
+            as: "id"
+      - get:
+          url: "/details/{{ id }}"
+      - think: 3
+      - post:
+          url: "/cart"
+          json:
+            productId: "{{ id }}"
+
+```
