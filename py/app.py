@@ -5,14 +5,9 @@ import time
 
 app = Flask(__name__)
 
-@app.route('/saludo/hola', methods = ['GET'])
+@app.route('/ping', methods = ['GET'])
 def getmataambre():
-	return 'mundo'
-
-@app.route('/random/', methods = ['GET'])
-@app.route('/random/<int:n>', methods = ['GET'])
-def getRandom(n=10):
-	return '%s' % randint(0, n)
+	return 'pong!'
 
 @app.route('/sleep/<int:n>', methods = ['GET'])
 def sleep(n=10):

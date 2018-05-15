@@ -11,9 +11,11 @@ Ejecutar mataambre con gunicorn
 ---
 ### Test
 
-Hola mundo..
+
 ```
-curl localhost:8000/cortesdecarne/mataambre
+curl localhost:8000/ping
+curl localhost:8000/sleep/{seg}
+curl localhost:8000/fibo/{num}
 ```
 
 
