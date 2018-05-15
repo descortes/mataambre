@@ -11,18 +11,18 @@ app.get('/hola/:id', (req, res) => {
 
 app.get('/fibo/:numb', (req, res) => {
 	var numb = req.params.numb || 1;
-	res.send(fibo(numb));
-}
+	res.send('' + fibo(numb));
+});
 
 app.get('/sleep/:numb', (req, res) => {
 	var numb = req.params.numb || 5;
-	setTimeout(function() {res.send(numb)}, numb*1000);
+	setTimeout(function() {res.send(''+numb)}, numb*1000);
 });
 
 app.get('/random/:numb', (req, res) => {
 	var numb = req.params.numb || 23;
 	res.send(random(numb));
-}
+});
 
 function random(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
