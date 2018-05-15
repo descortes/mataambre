@@ -13,6 +13,18 @@ services:
         ports:
             - 9555:8000
 
+    node:
+        build:
+            context: .
+            dockerfile: node-express.dockerfile
+        volumes:
+            - ./js:/app/src
+        links:
+            - grafana
+        command: npm run start
+        ports:
+            -3000:3000
+
     nginx:
         image: nginx:1.13.10
         ports:
