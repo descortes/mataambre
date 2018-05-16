@@ -12,7 +12,7 @@ def ping():
 @app.route('/sleep/<int:n>', methods = ['GET'])
 def sleep(n=10):
 	time.sleep(n*0.001)
-	return '%s' % n*0.001
+	return '%s' % n
 
 @app.route('/fibo/<int:n>', methods = ['GET'])
 def fibo(n):
@@ -21,4 +21,4 @@ def fibo(n):
 def callFibo(n):
 	if n<=2:
 		return 1
-	return calFib(n-1)+calFib(n-2)
+	return callFibo(n-1)+callFibo(n-2)
