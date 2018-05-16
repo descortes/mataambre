@@ -5,25 +5,20 @@ import time
 
 app = Flask(__name__)
 
-@app.route('/saludo/hola', methods = ['GET'])
-def getmataambre():
-	return 'mundo'
-
-@app.route('/random/', methods = ['GET'])
-@app.route('/random/<int:n>', methods = ['GET'])
-def getRandom(n=10):
-	return '%s' % randint(0, n)
+@app.route('/ping', methods = ['GET'])
+def ping():
+	return 'pong!'
 
 @app.route('/sleep/<int:n>', methods = ['GET'])
 def sleep(n=10):
-	time.sleep(n)
-	return 'Sleep: %s seconds.' % n
+	time.sleep(n*0.001)
+	return '%s' % n*0.001
 
 @app.route('/fibo/<int:n>', methods = ['GET'])
-def getFibo(n):
-	return '%s' % calFib(n)
+def fibo(n):
+	return '%s' % callFibo(n)
 
-def calFib(n):
+def callFibo(n):
 	if n<=2:
 		return 1
 	return calFib(n-1)+calFib(n-2)

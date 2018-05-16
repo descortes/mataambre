@@ -18,12 +18,23 @@ config:
   pool: 50 # All HTTP requests from all virtual users will be sent over the same connections
 
   phases:
-    - name: Plain
-      duration: 120
+    - name: "Plain Low"
+      duration: 30
+      arrivalRate: 5
+    - name: "Ramp up to Max"
+      duration: 15
+      arrivalRate: 5
+      rampTo: 30
+    - name: "Ramp down to Plain High"
+      duration: 10
       arrivalRate: 30
+      rampTo: 20
+    - name: "Plain High"
+      duration: 40
+      arrivalRate: 20
 
 scenarios:
-  - name: Root (/)
+  - name: sleep (/)
     flow:
       - get:
-          url: '/saludo/hola'
+          url: '/sleep/100'
