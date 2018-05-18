@@ -1,0 +1,11 @@
+# balancer, server web python
+upstream mataambre {
+    server localhost:8000;
+    server localhost:8001;
+}
+
+server {
+    location / {
+        proxy_pass http://mataambre;
+    }
+}

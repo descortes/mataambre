@@ -1,0 +1,13 @@
+{
+  "name": "tp-arquitectura",
+  "version": "1.0.0",
+  "description": "Webservice en nodejs con express al que se le medira la performance",
+  "main": "app.js",
+  "dependencies": {
+    "artillery": "^1.6.0-15",
+    "express": "^4.16.3"
+  },
+  "scripts": {
+    "start": "node src/app.js"
+  }
+}
